@@ -1,0 +1,64 @@
+====================================================================
+  DIY DVD DATA RECOVERY - INSTRUCCIONES DE USO Y CONFIGURACIÓN
+====================================================================
+
+Este programa permite escanear sectores físicos de unidades ópticas 
+(CD/DVD) de forma directa (Raw Sector Scanner) para recuperar archivos 
+multisesión, ocultos o dañados que Windows no puede leer de forma nativa.
+
+--------------------------------------------------------------------
+1. REQUISITOS PREVIOS (Para ejecutar desde el código fuente .py)
+--------------------------------------------------------------------
+Antes de lanzar la aplicación por primera vez, es necesario instalar 
+la librería de procesamiento de imágenes "Pillow" para poder generar 
+las vistas previas en tiempo real dentro de la interfaz gráfica.
+
+Abre tu terminal y ejecuta el siguiente comando:
+pip install pillow
+
+--------------------------------------------------------------------
+2. CÓMO ARRANCAR LA APLICACIÓN
+--------------------------------------------------------------------
+Dado que Windows bloquea por seguridad el acceso directo al hardware y 
+a los sectores físicos de los lectores (\\.\Unidad:), la aplicación 
+REQUIERE obligatoriamente ejecutarse con privilegios elevados.
+
+Pasos para arrancar en Windows:
+1. Abre el menú Inicio y busca "Terminal", "PowerShell" o "CMD".
+2. Haz clic derecho sobre el icono y selecciona "Ejecutar como Administrador".
+3. Navega hasta la carpeta del proyecto usando el comando 'cd'.
+4. Ejecuta el script con:
+   python recuperador.py
+
+--------------------------------------------------------------------
+3. MODO DE EMPLEO
+--------------------------------------------------------------------
+1. Introduce el DVD en la lectora.
+2. En el cuadro superior de la app, asegúrate de escribir la letra 
+   correcta de tu unidad (por defecto viene configurada la unidad D:).
+3. Haz clic en "Escanear Sectores". El programa empezará a buscar las 
+   firmas de archivos (mágicas) directamente en los bloques físicos.
+4. Conforme aparezcan los archivos en la lista, puedes hacer DOBLE CLIC 
+   sobre cualquiera de ellos para ver una miniatura en el panel derecho.
+5. Selecciona la ruta de tu ordenador donde quieres volcar los datos 
+   (o usa el botón "Examinar...").
+6. Selecciona los archivos que te interesen y pulsa "Extraer Selección" 
+   o directamente "Extraer TODO" para ponerlos a salvo en tu PC.
+
+--------------------------------------------------------------------
+4. CÓMO GENERAR EL EJECUTABLE (.EXE) INDEPENDIENTE
+--------------------------------------------------------------------
+Si quieres empaquetar este programa en un único archivo ejecutable 
+para compartirlo con usuarios que no tengan Python instalado:
+
+1. Instala PyInstaller:
+   pip install pyinstaller
+2. Compila el script ejecutando:
+   pyinstaller --onefile --noconsole recuperador.py
+3. Encontrarás el archivo "recuperador.exe" listo para usar dentro 
+   de la nueva carpeta llamada "dist".
+
+*Nota: Al ejecutar el .exe por primera vez, es posible que Windows Defender 
+muestre un aviso de advertencia. Esto es normal en ejecutables caseros que 
+acceden al hardware mediante la API de Windows mediante 'ctypes'. Es 100% seguro.
+====================================================================
