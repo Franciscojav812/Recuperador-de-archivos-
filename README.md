@@ -36,7 +36,7 @@ haya sectores que no se puedan leer.
 
 | | Motivo |
 |---|---|
-| Python 3.9+ | Rápido de desarrollar y suficiente: el cuello de botella es la velocidad del lector, no la CPU (analizar un DVD completo cuesta solo unos segundos de CPU). |
+| Python 3.10+ | Rápido de desarrollar y suficiente: el cuello de botella es la velocidad del lector, no la CPU (analizar un DVD completo cuesta solo unos segundos de CPU). |
 | ctypes + API Win32 | Acceso RAW a `\\.\D:` (`CreateFileW`, `ReadFile`, `SetFilePointerEx`, `DeviceIoControl`) sin compilar extensiones en C. |
 | tkinter | Viene con Python: no añade dependencias y el ejecutable final es pequeño. |
 | Pillow | Miniaturas en la vista previa. Es opcional. |
