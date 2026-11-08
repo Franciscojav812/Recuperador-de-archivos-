@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "recuperador-cd-dvd"
+dynamic = ["version"]
+description = "Recuperación de archivos de CD/DVD dañados mediante lectura RAW de sectores y file carving"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Francisco" }]
+dependencies = ["pillow>=9"]
+keywords = ["data recovery", "file carving", "forensics", "dvd", "iso9660"]
+
+[project.scripts]
+recuperador = "recuperador.__main__:main"
+
+[tool.setuptools]
+packages = ["recuperador"]
+
+[tool.setuptools.dynamic]
+version = { attr = "recuperador.__version__" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = [".", "tests"]
